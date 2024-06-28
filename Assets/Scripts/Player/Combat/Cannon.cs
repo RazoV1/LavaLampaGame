@@ -24,6 +24,7 @@ public class Cannon : MonoBehaviour
         if (collision.tag == "Player")
         {
             isInPlayersRange = false;
+
         }
     }
     public void Update()
@@ -32,6 +33,7 @@ public class Cannon : MonoBehaviour
         {
             isActive = !isActive;
             playerController.enabled = !isActive;
+            playerController.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         }
 
         if (isActive)
