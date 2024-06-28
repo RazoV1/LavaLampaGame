@@ -20,6 +20,8 @@ namespace platformer
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
 
+        public GameObject currentAmmunition;
+
         [HideInInspector] public int horisontalInputValue;
 
         //[SerializeField] private GameObject gun;
