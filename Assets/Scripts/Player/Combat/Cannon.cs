@@ -46,7 +46,7 @@ public class Cannon : MonoBehaviour
                 {
                     var bulletInstance = Instantiate(bulletInPlayerInv,transform.position,transform.rotation);
                     bulletInstance.GetComponent<Rigidbody2D>().AddForce((Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position)*bulletSpeed);
-                    
+                    playerController.currentAmmunition = null;
                 }
             }
         }
