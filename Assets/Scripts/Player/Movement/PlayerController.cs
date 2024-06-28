@@ -118,6 +118,19 @@ namespace platformer
 
         #endregion
 
+        #region Animations
+        private void HandleTurn()
+        {
+            if (horisontalInputValue > 0)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+        #endregion
 
         #region Jumping
 
