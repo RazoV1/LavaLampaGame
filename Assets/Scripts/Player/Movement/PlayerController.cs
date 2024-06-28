@@ -21,6 +21,9 @@ namespace platformer
         private bool _cachedQueryStartInColliders;
 
         [HideInInspector] public int horisontalInputValue;
+
+        [SerializeField] private GameObject gun;
+        [SerializeField] private float gunYOffset;
         //[SerializeField] private Animator _animator;    
 
         #region Interface
@@ -123,11 +126,13 @@ namespace platformer
         {
             if (horisontalInputValue > 0)
             {
-
+                GetComponent<SpriteRenderer>().flipX = false;
+                gun.transform.localPosition = new Vector2(1, gunYOffset);
             }
             else
             {
-
+                GetComponent<SpriteRenderer>().flipX = true;
+                gun.transform.localPosition = new Vector2(-1, gunYOffset);
             }
         }
         #endregion
@@ -179,6 +184,7 @@ namespace platformer
             {
                 _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
                 horisontalInputValue = (int)_frameInput.Move.x;
+                HandleTurn();
             }
             //_animator.SetInteger("velIntX", (int)_frameInput.Move.x);
             
