@@ -11,6 +11,7 @@ public class Cannon : MonoBehaviour
     [SerializeField] private PlayerController playerController;
 
     [SerializeField] private GameObject bullet;
+    [SerializeField] private float bulletSpeed;
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -38,6 +39,16 @@ public class Cannon : MonoBehaviour
             var direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            if (Input.GetMouseButtonDown(0))
+            {
+                var bulletInPlayerInv = playerController.currentAmmunition.gameObject;
+                if (bulletInPlayerInv != null)
+                {
+                    var bulletInstance = Instantiate(bulletInPlayerInv,transform.position,transform.rotation);
+                    bulletInstance.GetComponent<Rigidbody2D>().AddForce((Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position)*bulletSpeed);
+                    
+                }
+            }
         }
     }
 }
