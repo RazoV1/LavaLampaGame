@@ -16,6 +16,8 @@ public class Kukaracha : MonoBehaviour
     public Transform spawnPos;
 
     [SerializeField] private TMP_Text text;
+    [SerializeField] private float turnSpeed;
+
 
     public bool isMoving = false;
     public bool isIncubating = false;
@@ -45,7 +47,7 @@ public class Kukaracha : MonoBehaviour
 
         playerPos = GameManager.Instance.player.transform;
         gameObject.tag = number.ToString();
-        text.text = number.ToString();
+        text.text = number.ToString() + "\nбит";
     }
 
     private void Update()
@@ -66,7 +68,10 @@ public class Kukaracha : MonoBehaviour
         
         else if (isMoving)
         {
-            transform.Translate((playerPos.position-transform.position).normalized * speed * Time.deltaTime);
+            transform.Translate(Vector2.down * speed * Time.deltaTime);
+            var direction = playerPos.position - transform.position;
+            var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
 

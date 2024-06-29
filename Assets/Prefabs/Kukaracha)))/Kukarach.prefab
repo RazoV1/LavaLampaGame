@@ -280,6 +280,7 @@ MonoBehaviour:
   bugController: {fileID: 0}
   spawnPos: {fileID: 0}
   text: {fileID: 6502191990964617455}
+  turnSpeed: 1
   isMoving: 1
   isIncubating: 0
   timeToSpawn: 0

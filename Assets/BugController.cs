@@ -19,12 +19,13 @@ public class BugController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(SpawnBugs(1, spawnSpeed));
+            StartCoroutine(SpawnBugs(3, spawnSpeed));
         }
     }
 
     public IEnumerator SpawnBugs(int count, float timeToSpawn)
     {
+        GetComponent<BoxCollider2D>().enabled = false;
         for (int i = 1; i <= count; i++)
         {
             while (emptySpawnPositions.Count == 0) yield return new WaitForSeconds(1f);
