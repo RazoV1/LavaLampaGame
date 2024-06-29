@@ -1,3 +1,4 @@
+using System;
 using platformer;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,10 +9,19 @@ public class Cannon : MonoBehaviour
     [SerializeField] private bool isActive = false;
     [SerializeField] private bool isInPlayersRange = false;
 
-    [SerializeField] private PlayerController playerController;
 
+    private PlayerController playerController;
+    
     [SerializeField] private GameObject bullet;
     [SerializeField] private float bulletSpeed;
+    [SerializeField] private GameObject hidePlatformsParent;
+
+
+    private void Start()
+    {
+        playerController = GameManager.Instance.player.GetComponent<PlayerController>();
+    }
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -34,6 +44,23 @@ public class Cannon : MonoBehaviour
             isActive = !isActive;
             playerController.enabled = !isActive;
             playerController.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            for(int i = 0; i < hidePlatformsParent.transform.childCount; i++)
+            {
+                Transform localPlatformParent = hidePlatformsParent.transform.GetChild(i);
+                for (int j = 0; j < localPlatformParent.childCount; j++)
+                {
+                    if(isActive) {
+                        localPlatformParent.GetChild(j).GetComponent<SpriteRenderer>().color =
+                            new Color(1, 1,1, 0.3f);
+                        
+                    }
+                    else
+                    {
+                        localPlatformParent.GetChild(j).GetComponent<SpriteRenderer>().color =
+                            new Color(1, 1,1, 1);
+                    }
+                }
+            }
         }
 
         if (isActive)

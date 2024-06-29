@@ -8,11 +8,11 @@ public class BulletProvider : MonoBehaviour
     public PlayerController playerController;
     public bool isInPlayersRange = false;
 
-    [SerializeField] private GameObject providedBullet;
+    public GameObject providedBullet;
 
     public void Start()
     {
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        playerController = GameManager.Instance.player.GetComponent<PlayerController>();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

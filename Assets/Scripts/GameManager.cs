@@ -11,8 +11,12 @@ public class GameManager : MonoBehaviour
     public CinemachineVirtualCamera playerCamera;
     public float camSize;
 
+    public BulletProvider BulletProvider;
+
     public GameObject player;
 
+    public int[] bugNumbers;
+    
     private void Awake()
     {
         if (Instance == null)

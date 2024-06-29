@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 namespace platformer
@@ -60,6 +61,19 @@ namespace platformer
                 JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C),
                 Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
             };
+
+            if (currentAmmunition != null && Input.GetKeyDown(KeyCode.G))
+            {
+                GameObject SpawnedBullet = Instantiate(GameManager.Instance.BulletProvider.gameObject);
+                SpawnedBullet.GetComponent<BulletProvider>().providedBullet = currentAmmunition;
+
+                SpawnedBullet.transform.position = transform.position + Vector3.right * horisontalInputValue;
+                currentAmmunition = null;
+
+                SpawnedBullet.transform.GetChild(0).GetComponent<TextMeshPro>().text =
+                    SpawnedBullet.gameObject.tag.ToString();
+
+            }
 
             if (_stats.SnapInput)
             {
