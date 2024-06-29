@@ -42,12 +42,12 @@ public class Kukaracha : MonoBehaviour
     public void Start()
     {
         GetComponent<AudioSource>().Stop();
-        timeToSpawn = 1f;
+        timeToSpawn = 10f;
         timeToSpawnText = timeToSpawnText.gameObject.GetComponent<TextMeshPro>();
 
         playerPos = GameManager.Instance.player.transform;
         gameObject.tag = number.ToString();
-        text.text = number.ToString() + "\nбит";
+        text.text = number.ToString() + "\nпїЅпїЅпїЅ";
     }
 
     private void Update()

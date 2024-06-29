@@ -19,6 +19,7 @@ namespace platformer
         private CapsuleCollider2D _col;
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
+        private Animator _animator;
         private bool _cachedQueryStartInColliders;
 
         public GameObject currentAmmunition;
@@ -43,7 +44,8 @@ namespace platformer
         {
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<CapsuleCollider2D>();
-
+            _animator = GetComponent<Animator>();
+            
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
         }
 
@@ -60,8 +62,13 @@ namespace platformer
                 JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C),
                 JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C),
                 Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
+                
             };
-
+            if(_frameInput.Move.x >= 0.3f || _frameInput.Move.x <= -0.3f) _animator.SetBool("isRunning", true);
+            else
+            {
+                _animator.SetBool("isRunning", false);
+            }
             if (currentAmmunition != null && Input.GetKeyDown(KeyCode.G))
             {
                 GameObject SpawnedBullet = Instantiate(GameManager.Instance.BulletProvider.gameObject);

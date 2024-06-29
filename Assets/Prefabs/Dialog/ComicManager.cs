@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using platformer;
 using UnityEngine;
 
 public class ComicManager : MonoBehaviour
@@ -16,6 +17,10 @@ public class ComicManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
+            foreach (var img in images)
+            {
+                img.SetActive(false);
+            }
             //print(Time.deltaTime);
             if (currentSlide < images.Length)
             {
@@ -38,7 +43,15 @@ public class ComicManager : MonoBehaviour
 
     public void CloseComic()
     {
+        foreach (var img in images)
+        {
+            img.SetActive(false);
+        }
+
+        images[0].SetActive(true);
+        currentSlide = 0;
         Time.timeScale = 1;
         gameObject.SetActive(false);
+        GameManager.Instance.player.GetComponent<PlayerController>().enabled = true;
     }
 }
