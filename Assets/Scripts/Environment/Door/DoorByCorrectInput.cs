@@ -15,6 +15,7 @@ public class DoorByCorrectInput : MonoBehaviour
 
     public void CheckInput()
     {
+
         var input = doorUI.GetComponentInChildren<TMP_InputField>().text;
         if (input == key)
         {

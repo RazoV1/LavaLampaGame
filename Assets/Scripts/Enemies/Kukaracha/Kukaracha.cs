@@ -28,6 +28,7 @@ public class Kukaracha : MonoBehaviour
     public void StartDeathMarch()
     {
         isMoving = true;
+        GetComponent<BoxCollider2D>().enabled = true;
         GetComponent<Animator>().SetTrigger("Bug");
         GetComponent<Animator>().SetInteger("num",number);
         GetComponent<AudioSource>().Play();

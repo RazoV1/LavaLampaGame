@@ -45,7 +45,7 @@ public class Cannon : MonoBehaviour
 
                     localPlatformParent.GetChild(j).GetComponent<SpriteRenderer>().color =
                         new Color(1, 1, 1, 1);
-
+                    localPlatformParent.GetChild(j).GetComponent<BoxCollider2D>().enabled = true;
                 }
             }
         }
@@ -66,12 +66,13 @@ public class Cannon : MonoBehaviour
                     {
                         localPlatformParent.GetChild(j).GetComponent<SpriteRenderer>().color =
                             new Color(1, 1, 1, 0.3f);
-
+                        localPlatformParent.GetChild(j).GetComponent<BoxCollider2D>().enabled = false;
                     }
                     else
                     {
                         localPlatformParent.GetChild(j).GetComponent<SpriteRenderer>().color =
                             new Color(1, 1, 1, 1);
+                        localPlatformParent.GetChild(j).GetComponent<BoxCollider2D>().enabled = true;
                     }
                 }
             }
@@ -88,7 +89,7 @@ public class Cannon : MonoBehaviour
                 if (bulletInPlayerInv != null)
                 {
                     var bulletInstance = Instantiate(bulletInPlayerInv, transform.position, Quaternion.identity);
-                    bulletInstance.GetComponent<Rigidbody2D>().velocity = ((Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position) * bulletSpeed);
+                    bulletInstance.GetComponent<Rigidbody2D>().velocity = ((Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized * bulletSpeed);
                     playerController.currentAmmunition = null;
                     fire.Play();
                 }
