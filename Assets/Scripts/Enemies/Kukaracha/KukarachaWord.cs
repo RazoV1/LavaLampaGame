@@ -29,6 +29,7 @@ public class KukarachaWord : Kukaracha
         gameObject.tag = number.ToString();
             
         int.TryParse(gameObject.tag, out counter);
+        if (counter == 1 || counter == 2) counter *= 8;
         HP = nameArray.Length * counter;
         //text.text = number.ToString() + "\n���";
     }
@@ -99,6 +100,7 @@ public class KukarachaWord : Kukaracha
     {
         if (other.CompareTag("8") || other.CompareTag("16"))
         {
+
             int damage;
             int.TryParse(other.tag, out damage);
             HP -= damage;
@@ -107,7 +109,7 @@ public class KukarachaWord : Kukaracha
             if (HP % counter == 0)
             {
                 string outputName = "";
-                for (int i = 0; i < (HP/counter)-1; i++)
+                for (int i = 0; i < (HP/counter); i++)
                 {
                     outputName = outputName + nameArray[i];
                 }
