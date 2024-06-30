@@ -20,7 +20,7 @@ public class BugController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(SpawnBugs(4, spawnSpeed));
+            StartCoroutine(SpawnBugs(bugNums.Count, spawnSpeed));
         }
     }
 
