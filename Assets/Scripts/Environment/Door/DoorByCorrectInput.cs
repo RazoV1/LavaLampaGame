@@ -18,7 +18,7 @@ public class DoorByCorrectInput : MonoBehaviour
         var input = doorUI.GetComponentInChildren<TMP_InputField>().text;
         if (input == key)
         {
-            Instantiate(desintegrationParticles).Play();
+            Instantiate(desintegrationParticles,transform.position,Quaternion.identity).Play();
             doorUI.SetActive(false);
             Destroy(gameObject);
         }
