@@ -24,6 +24,7 @@ namespace platformer
         private bool _cachedQueryStartInColliders;
 
         public GameObject currentAmmunition;
+        public GameObject currentProvider;
 
         [HideInInspector] public int horisontalInputValue;
 
@@ -124,7 +125,10 @@ namespace platformer
             
             if (currentAmmunition != null && Input.GetKeyDown(KeyCode.G))
             {
-                GameObject SpawnedBullet = Instantiate(GameManager.Instance.BulletProvider.gameObject);
+                GameObject SpawnedBullet = Instantiate(currentProvider);
+                Destroy(currentProvider);
+                SpawnedBullet.name = "InstantiatedBullet";
+                SpawnedBullet.gameObject.SetActive(true);
                 SpawnedBullet.GetComponent<BulletProvider>().providedBullet = currentAmmunition;
 
                 SpawnedBullet.transform.position = transform.position + Vector3.right * horisontalInputValue;

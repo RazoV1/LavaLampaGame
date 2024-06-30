@@ -36,7 +36,8 @@ public class BulletProvider : MonoBehaviour
         if (isInPlayersRange && Input.GetKeyDown(KeyCode.E) && playerController.currentAmmunition == null)
         {
             playerController.currentAmmunition = providedBullet;
-            Destroy(gameObject);
+            playerController.currentProvider = gameObject;
+            gameObject.SetActive(false);
         }
     }
 }
