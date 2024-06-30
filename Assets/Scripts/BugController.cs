@@ -13,6 +13,7 @@ public class BugController : MonoBehaviour
     public List<Transform> spawnPositions;
     public List<Transform> emptySpawnPositions;
     public List<int> bugNums;
+    public List<string> bugStrings;
 
     [SerializeField] private int bugCount;
 
@@ -45,6 +46,7 @@ public class BugController : MonoBehaviour
             //spawnedBug.number =
             //    GameManager.Instance.bugNumbers[Random.Range(0, GameManager.Instance.bugNumbers.Length)];
             spawnedBug.number = bugNums[i];
+            if(bugStrings.Count > 0) spawnedBug.GetComponent<KukarachaWord>().nameStr = bugStrings[i];
             while (spawnedBug != null)
             {
                 yield return null;
