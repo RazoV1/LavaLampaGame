@@ -14,13 +14,15 @@ public class BugController : MonoBehaviour
     public List<Transform> emptySpawnPositions;
     public List<int> bugNums;
 
+    [SerializeField] private int bugCount;
+
     public float spawnSpeed;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(SpawnBugs(4, spawnSpeed));
+            StartCoroutine(SpawnBugs(bugCount, spawnSpeed));
         }
     }
 
