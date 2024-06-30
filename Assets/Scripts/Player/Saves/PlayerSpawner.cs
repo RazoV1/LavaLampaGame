@@ -12,9 +12,6 @@ public class PlayerSpawner : MonoBehaviour
         {
             GameManager.Instance.player.transform.position = Spawns[PlayerPrefs.GetInt("checkpoint")].position;
         }
-        else
-        {
-            PlayerPrefs.SetInt("checkpoint", 0);
-        }
+        
     }
 }

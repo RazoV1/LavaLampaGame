@@ -1,8 +1,8 @@
-using System;
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class Kukaracha : MonoBehaviour
@@ -10,6 +10,8 @@ public class Kukaracha : MonoBehaviour
     [SerializeField] private float speed;
     public int number;
     [SerializeField] protected Transform playerPos;
+
+    [SerializeField] private List<AudioClip> funnySounds;
 
     public BugController bugController;
     
@@ -31,6 +33,7 @@ public class Kukaracha : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = true;
         GetComponent<Animator>().SetTrigger("Bug");
         GetComponent<Animator>().SetInteger("num",number);
+        
         GetComponent<AudioSource>().Play();
         isIncubating = false;
     }
@@ -85,6 +88,10 @@ public class Kukaracha : MonoBehaviour
             bugController.spawnPositions.Remove(spawnPos);
             Destroy(other.gameObject);
             Destroy(gameObject);
+        }
+        else if (other.tag == "Player")
+        {
+            SceneManager.LoadScene(1);
         }
     }
 }

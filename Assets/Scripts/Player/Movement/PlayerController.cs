@@ -95,7 +95,7 @@ namespace platformer
                 Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
             };
             //Animations
-            if (_rb.velocity.y >= 1f)
+            if (_rb.velocity.y >= 16f)
             {
                 _animator.SetBool("isJumping", true);
             }
@@ -104,7 +104,7 @@ namespace platformer
                 _animator.SetBool("isJumping", false);
             }
             
-            if (_rb.velocity.y <= -1f)
+            if (_rb.velocity.y <= -5f)
             {
                 _animator.SetBool("isFalling", true);
             }

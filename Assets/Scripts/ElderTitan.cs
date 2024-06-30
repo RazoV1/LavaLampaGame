@@ -13,7 +13,16 @@ public class ElderTitan : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GetComponent<Animator>().SetTrigger("On");
+            Animator anim;
+            TryGetComponent<Animator>(out anim);
+            try
+            {
+                anim.SetTrigger("On");
+            }
+            catch
+            {
+                Debug.Log("L");
+            }
             transform.GetChild(0).gameObject.SetActive(true);
             SoundsBaseCollection.Instance.awakeElder.Play();
             canOpen = true;
@@ -35,7 +44,16 @@ public class ElderTitan : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GetComponent<Animator>().SetTrigger("Off");
+            Animator anim;
+            TryGetComponent<Animator>(out anim);
+            try
+            {
+                anim.SetTrigger("Off");
+            }
+            catch
+            {
+                Debug.Log("L");
+            }
             canOpen = false;
             CloseWard();
         }

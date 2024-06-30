@@ -91,6 +91,7 @@ public class Cannon : MonoBehaviour
                 {
                     var bulletInstance = Instantiate(bulletInPlayerInv, bulletSpawn.position, Quaternion.identity);
                     bulletInstance.GetComponent<Rigidbody2D>().velocity = ((Camera.main.ScreenToWorldPoint(Input.mousePosition) - bulletSpawn.position).normalized * bulletSpeed);
+                    bulletInstance.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                     playerController.currentAmmunition = null;
                     fire.Play();
                 }
