@@ -11,6 +11,7 @@ public class PlayerSpawner : MonoBehaviour
         if (PlayerPrefs.HasKey("checkpoint"))
         {
             GameManager.Instance.player.transform.position = Spawns[PlayerPrefs.GetInt("checkpoint")].position;
+            Spawns[PlayerPrefs.GetInt("checkpoint")].GetComponent<Checkpoint>().playerLight.shapeLightFalloffSize = Spawns[PlayerPrefs.GetInt("checkpoint")].GetComponent<Checkpoint>().radius;
         }
         
     }
