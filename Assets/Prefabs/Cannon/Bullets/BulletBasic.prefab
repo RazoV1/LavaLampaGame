@@ -182,10 +182,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7727673342656096242}
   - component: {fileID: 7727673342656096245}
-  - component: {fileID: 7727673342656096243}
   - component: {fileID: 7727673342656096240}
   - component: {fileID: 7727673342656096241}
   - component: {fileID: -296222552830570292}
+  - component: {fileID: 2577474228274135691}
   m_Layer: 0
   m_Name: BulletBasic
   m_TagString: 8
@@ -201,9 +201,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7727673342656096244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.902, y: 1.512, z: 0}
-  m_LocalScale: {x: 0.22218, y: 0.22218, z: 0.22218}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 3.44, y: 1.512, z: 0}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8138141990602817962}
   m_Father: {fileID: 0}
@@ -249,9 +249,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.68527126, b: 0.6666666, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 72c4e3f1e850cd842a7bd7037d58f848, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -261,22 +261,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &7727673342656096243
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7727673342656096244}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!50 &7727673342656096240
 Rigidbody2D:
   serializedVersion: 4
@@ -370,8 +354,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9960785, g: 0.20000002, b: 0.15294118, a: 1}
-      key1: {r: 0.9960785, g: 0.20000002, b: 0.15294118, a: 1}
+      key0: {r: 0.909804, g: 0.4666667, b: 0.32156864, a: 1}
+      key1: {r: 0.909804, g: 0.4666667, b: 0.32156864, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -421,3 +405,29 @@ MonoBehaviour:
   lifetime: 5
   damage: 5
   text: {fileID: 7097177582380167068}
+--- !u!61 &2577474228274135691
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7727673342656096244}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 4.114546, y: 0.011272788}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.0080808075, y: 0.4922435}
+    oldSize: {x: 8.37, y: 2.18}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8.369999, y: 2.18}
+  m_EdgeRadius: 0

@@ -13,11 +13,20 @@ public class ComicManager : MonoBehaviour
     [Range(1f, 15f)][SerializeField] private float timeToChange;
     [SerializeField] private bool destroyOnRestart = false;
 
+    [SerializeField] private bool isTutorial = false;
 
     private float currentTimeToChange;
     private int currentSlide = 1;
 
-    
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("checkpoint") && isTutorial)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+
 
     private void Update()
     {
@@ -57,10 +66,7 @@ public class ComicManager : MonoBehaviour
         images[0].SetActive(true);
         currentSlide = 0;
         Time.timeScale = 1;
-        if (destroyOnRestart == true)
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+        
         gameObject.SetActive(false);
         GameManager.Instance.player.GetComponent<PlayerController>().enabled = true;
         

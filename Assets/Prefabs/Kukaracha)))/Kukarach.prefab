@@ -277,6 +277,7 @@ MonoBehaviour:
   speed: 1
   number: 16
   playerPos: {fileID: 0}
+  funnySounds: []
   bugController: {fileID: 0}
   spawnPos: {fileID: 0}
   text: {fileID: 6502191990964617455}
