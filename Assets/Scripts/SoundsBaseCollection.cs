@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = System.Object;
 
 public class SoundsBaseCollection : MonoBehaviour
 {
@@ -35,4 +36,5 @@ public class SoundsBaseCollection : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
+    
 }
