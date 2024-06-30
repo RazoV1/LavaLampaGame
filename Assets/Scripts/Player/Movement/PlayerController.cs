@@ -82,7 +82,7 @@ namespace platformer
                 
             };
             //Animations
-            if (_rb.velocity.y >= 0.5f)
+            if (_rb.velocity.y >= 1f)
             {
                 _animator.SetBool("isJumping", true);
             }
@@ -91,7 +91,7 @@ namespace platformer
                 _animator.SetBool("isJumping", false);
             }
             
-            if (_rb.velocity.y <= -0.5f)
+            if (_rb.velocity.y <= -1f)
             {
                 _animator.SetBool("isFalling", true);
             }
