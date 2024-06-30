@@ -33,6 +33,7 @@ public class BugController : MonoBehaviour
     public IEnumerator SpawnBugs(int count, float timeToSpawn)
     {
         GetComponent<BoxCollider2D>().enabled = false;
+        SoundsBaseCollection.Instance.fightMusic.Play();
         for (int i = 0; i <= count; i++)
         {
             while (emptySpawnPositions.Count == 0) yield return new WaitForSeconds(1f);
@@ -52,6 +53,7 @@ public class BugController : MonoBehaviour
                 yield return null;
             }
         }
+        SoundsBaseCollection.Instance.fightMusic.Stop();
         closedDoor.Open();
         nextDoor.Open();
     }

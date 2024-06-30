@@ -24,6 +24,9 @@ public class SoundsBaseCollection : MonoBehaviour
     [Header("Gay Death")]
     public AudioSource revive;
 
+    [Header("Music))))")]
+    public AudioSource fightMusic;
+
 
     public static SoundsBaseCollection Instance { get; private set; }
 

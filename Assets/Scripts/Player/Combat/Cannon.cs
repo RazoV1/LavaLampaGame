@@ -17,12 +17,15 @@ public class Cannon : MonoBehaviour
     [SerializeField] private GameObject hidePlatformsParent;
     [SerializeField] private Transform bulletSpawn;
 
+    [SerializeField] private AudioSource bulletSpawnAudioSource;
+
     [SerializeField] private ParticleSystem fire;
 
 
     private void Start()
     {
         playerController = GameManager.Instance.player.GetComponent<PlayerController>();
+        bulletSpawnAudioSource = GetComponent<AudioSource>();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -94,6 +97,7 @@ public class Cannon : MonoBehaviour
                     bulletInstance.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                     playerController.currentAmmunition = null;
                     fire.Play();
+                    bulletSpawnAudioSource.Play();
                 }
             }
         }
