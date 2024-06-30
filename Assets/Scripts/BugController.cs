@@ -13,6 +13,8 @@ public class BugController : MonoBehaviour
     public List<Transform> spawnPositions;
     public List<Transform> emptySpawnPositions;
 
+    public bool isSecondScene;
+
     public float spawnSpeed;
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -36,7 +38,10 @@ public class BugController : MonoBehaviour
             spawnedBug.transform.position = spawnedBug.spawnPos.position;
             spawnedBug.bugController = this;
             spawnedBug.StartIncubating();
-            spawnedBug.number =
+            
+            if(isSecondScene) spawnedBug.number =
+                GameManager.Instance.bugNumbers[Random.Range(0, 2)];
+            else spawnedBug.number =
                 GameManager.Instance.bugNumbers[Random.Range(0, GameManager.Instance.bugNumbers.Length)];
             yield return new WaitForSeconds(timeToSpawn);
         }
