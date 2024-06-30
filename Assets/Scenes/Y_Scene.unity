@@ -264,6 +264,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   timeToChange: 4
+  destroyOnRestart: 0
 --- !u!4 &22719317
 Transform:
   m_ObjectHideFlags: 0
@@ -7632,6 +7633,7 @@ MonoBehaviour:
   cockroachRun: {fileID: 869889277}
   cockroachDie: {fileID: 1558082733}
   awakeElder: {fileID: 862013542}
+  revive: {fileID: 0}
 --- !u!1 &640814037
 GameObject:
   m_ObjectHideFlags: 0
@@ -18171,7 +18173,7 @@ MonoBehaviour:
   - {fileID: 1213923649}
   - {fileID: 1412256097}
   - {fileID: 1209769717}
-  isSecondScene: 1
+  bugNums: 08000000100000000800000010000000
   spawnSpeed: 10
 --- !u!1 &1516433610
 GameObject:
@@ -19918,6 +19920,7 @@ MonoBehaviour:
   - {fileID: 573095863}
   - {fileID: 1232380668}
   timeToChange: 4
+  destroyOnRestart: 0
 --- !u!4 &1629511119
 Transform:
   m_ObjectHideFlags: 0
