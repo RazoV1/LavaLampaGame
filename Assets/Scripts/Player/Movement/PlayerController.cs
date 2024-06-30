@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace platformer
 {
@@ -53,8 +54,24 @@ namespace platformer
         {
             _time += Time.deltaTime;
             GatherInput();
+            SoundCheck();
         }
 
+        private float runSoundDealay = 0f;
+        public void SoundCheck()
+        {
+            runSoundDealay -= Time.deltaTime;
+            if (_animator.GetBool("isFalling"))
+            {
+                
+            }
+            else if (_animator.GetBool("isRunning") && runSoundDealay <= 0 && !_animator.GetBool("isFalling") && !_animator.GetBool("isJumping"))
+            {
+                runSoundDealay = 0.45f;
+                SoundsBaseCollection.Instance.runSound[Random.Range(0, SoundsBaseCollection.Instance.runSound.Length)].Play();
+            }
+        }
+        
         private void GatherInput()
         {
             _frameInput = new FrameInput
@@ -64,11 +81,34 @@ namespace platformer
                 Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
                 
             };
-            if(_frameInput.Move.x >= 0.3f || _frameInput.Move.x <= -0.3f) _animator.SetBool("isRunning", true);
+            //Animations
+            if (_rb.velocity.y >= 0.5f)
+            {
+                _animator.SetBool("isJumping", true);
+            }
+            else
+            {
+                _animator.SetBool("isJumping", false);
+            }
+            
+            if (_rb.velocity.y <= -0.5f)
+            {
+                _animator.SetBool("isFalling", true);
+            }
+            else
+            {
+                _animator.SetBool("isFalling", false);
+            }
+
+            if (_frameInput.Move.x >= 0.3f || _frameInput.Move.x <= -0.3f)
+            {
+                _animator.SetBool("isRunning", true);
+            }
             else
             {
                 _animator.SetBool("isRunning", false);
             }
+            
             if (currentAmmunition != null && Input.GetKeyDown(KeyCode.G))
             {
                 GameObject SpawnedBullet = Instantiate(GameManager.Instance.BulletProvider.gameObject);
