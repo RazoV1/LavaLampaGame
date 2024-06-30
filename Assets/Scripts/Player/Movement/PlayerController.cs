@@ -74,6 +74,20 @@ namespace platformer
         
         private void GatherInput()
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (GameManager.Instance.PauseWindow.activeSelf)
+                {
+                    Time.timeScale = 1f;
+                    GameManager.Instance.PauseWindow.SetActive(false);
+                }
+                else
+                {
+                    Time.timeScale = 0f;
+                    GameManager.Instance.PauseWindow.SetActive(true);
+                }
+            }
+            
             _frameInput = new FrameInput
             {
                 JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C),
