@@ -3,15 +3,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Random = UnityEngine.Random;
 
 
-public class Kukaracha : MonoBehaviour
+public class KukarachaWord : Kukaracha
 {
+    
+    
+    [SerializeField] private TextMeshPro nameTextMesh;
+    public string nameStr;
+    public char[] nameArray;
+    public int HP;
+
+    private int counter;
+    
+    public void Start()
+    {
+        GetComponent<AudioSource>().Stop();
+        timeToSpawn = 10f;
+        timeToSpawnText = timeToSpawnText.gameObject.GetComponent<TextMeshPro>();
+        nameStr = GameManager.Instance.bugStrings[Random.Range(0, GameManager.Instance.bugStrings.Length)];
+        nameTextMesh.GetComponent<TextMeshPro>().text = nameStr;
+        nameArray = nameStr.ToCharArray();
+        playerPos = GameManager.Instance.player.transform;
+        gameObject.tag = number.ToString();
+            
+        int.TryParse(gameObject.tag, out counter);
+        HP = nameArray.Length * counter;
+        //text.text = number.ToString() + "\n���";
+    }
+    
+    /*public BugController bugController;
+
     [SerializeField] private float speed;
     public int number;
-    [SerializeField] protected Transform playerPos;
+    [SerializeField] private Transform playerPos;
 
-    public BugController bugController;
+    
+
     
     public Transform spawnPos;
 
@@ -29,7 +58,6 @@ public class Kukaracha : MonoBehaviour
     {
         isMoving = true;
         GetComponent<Animator>().SetTrigger("Bug");
-        GetComponent<Animator>().SetInteger("num",number);
         GetComponent<AudioSource>().Play();
         isIncubating = false;
     }
@@ -40,16 +68,7 @@ public class Kukaracha : MonoBehaviour
         isIncubating = true;
     }
     
-    public void Start()
-    {
-        GetComponent<AudioSource>().Stop();
-        timeToSpawn = 10f;
-        timeToSpawnText = timeToSpawnText.gameObject.GetComponent<TextMeshPro>();
-
-        playerPos = GameManager.Instance.player.transform;
-        gameObject.tag = number.ToString();
-        text.text = number.ToString() + "\n���";
-    }
+    
 
     private void Update()
     {
@@ -74,16 +93,28 @@ public class Kukaracha : MonoBehaviour
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(gameObject.tag))
+        if (other.CompareTag("8") || other.CompareTag("16"))
         {
-            bugController.emptySpawnPositions.Add(spawnPos);
-            bugController.spawnPositions.Remove(spawnPos);
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+            int damage;
+            int.TryParse(other.tag, out damage);
+            HP -= damage;
+            if (HP <= 0) Destroy(gameObject);
+
+            if (HP % counter == 0)
+            {
+                string outputName = "";
+                for (int i = 0; i < (HP/counter)-1; i++)
+                {
+                    outputName = outputName + nameArray[i];
+                }
+
+                nameStr = outputName;
+                nameTextMesh.text = outputName;
+            }
         }
     }
 }

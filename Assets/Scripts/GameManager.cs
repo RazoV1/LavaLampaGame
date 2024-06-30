@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
 
     public int[] bugNumbers;
+    public string[] bugStrings;
     
     private void Awake()
     {
