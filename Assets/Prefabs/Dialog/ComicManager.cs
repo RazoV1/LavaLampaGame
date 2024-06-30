@@ -41,7 +41,7 @@ public class ComicManager : MonoBehaviour
 
             currentSlide++;
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             CloseComic();
         }
