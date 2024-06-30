@@ -12,6 +12,7 @@ public class BugController : MonoBehaviour
     
     public List<Transform> spawnPositions;
     public List<Transform> emptySpawnPositions;
+    public List<int> bugNums;
 
     public float spawnSpeed;
     
@@ -19,14 +20,14 @@ public class BugController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(SpawnBugs(3, spawnSpeed));
+            StartCoroutine(SpawnBugs(4, spawnSpeed));
         }
     }
 
     public IEnumerator SpawnBugs(int count, float timeToSpawn)
     {
         GetComponent<BoxCollider2D>().enabled = false;
-        for (int i = 1; i <= count; i++)
+        for (int i = 0; i <= count; i++)
         {
             while (emptySpawnPositions.Count == 0) yield return new WaitForSeconds(1f);
             Kukaracha spawnedBug = Instantiate(bugPrefab);
@@ -36,8 +37,9 @@ public class BugController : MonoBehaviour
             spawnedBug.transform.position = spawnedBug.spawnPos.position;
             spawnedBug.bugController = this;
             spawnedBug.StartIncubating();
-            spawnedBug.number =
-                GameManager.Instance.bugNumbers[Random.Range(0, GameManager.Instance.bugNumbers.Length)];
+            //spawnedBug.number =
+            //    GameManager.Instance.bugNumbers[Random.Range(0, GameManager.Instance.bugNumbers.Length)];
+            spawnedBug.number = bugNums[i];
             yield return new WaitForSeconds(timeToSpawn);
         }
     }

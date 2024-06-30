@@ -29,6 +29,7 @@ public class Kukaracha : MonoBehaviour
     {
         isMoving = true;
         GetComponent<Animator>().SetTrigger("Bug");
+        GetComponent<Animator>().SetInteger("num",number);
         GetComponent<AudioSource>().Play();
         isIncubating = false;
     }

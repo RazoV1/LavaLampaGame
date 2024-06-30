@@ -33,7 +33,7 @@ public class BulletProvider : MonoBehaviour
 
     public void Update()
     {
-        if (isInPlayersRange && Input.GetKeyDown(KeyCode.E))
+        if (isInPlayersRange && Input.GetKeyDown(KeyCode.E) && playerController.currentAmmunition == null)
         {
             playerController.currentAmmunition = providedBullet;
             Destroy(gameObject);

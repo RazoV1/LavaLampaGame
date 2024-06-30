@@ -11,10 +11,12 @@ public class Cannon : MonoBehaviour
 
 
     private PlayerController playerController;
-    
+
     [SerializeField] private GameObject bullet;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private GameObject hidePlatformsParent;
+
+    [SerializeField] private ParticleSystem fire;
 
 
     private void Start()
@@ -34,7 +36,18 @@ public class Cannon : MonoBehaviour
         if (collision.tag == "Player")
         {
             isInPlayersRange = false;
+            isActive = false;
+            for (int i = 0; i < hidePlatformsParent.transform.childCount; i++)
+            {
+                Transform localPlatformParent = hidePlatformsParent.transform.GetChild(i);
+                for (int j = 0; j < localPlatformParent.childCount; j++)
+                {
 
+                    localPlatformParent.GetChild(j).GetComponent<SpriteRenderer>().color =
+                        new Color(1, 1, 1, 1);
+
+                }
+            }
         }
     }
     public void Update()
@@ -44,20 +57,21 @@ public class Cannon : MonoBehaviour
             isActive = !isActive;
             playerController.enabled = !isActive;
             playerController.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-            for(int i = 0; i < hidePlatformsParent.transform.childCount; i++)
+            for (int i = 0; i < hidePlatformsParent.transform.childCount; i++)
             {
                 Transform localPlatformParent = hidePlatformsParent.transform.GetChild(i);
                 for (int j = 0; j < localPlatformParent.childCount; j++)
                 {
-                    if(isActive) {
+                    if (isActive)
+                    {
                         localPlatformParent.GetChild(j).GetComponent<SpriteRenderer>().color =
-                            new Color(1, 1,1, 0.3f);
-                        
+                            new Color(1, 1, 1, 0.3f);
+
                     }
                     else
                     {
                         localPlatformParent.GetChild(j).GetComponent<SpriteRenderer>().color =
-                            new Color(1, 1,1, 1);
+                            new Color(1, 1, 1, 1);
                     }
                 }
             }
@@ -73,9 +87,10 @@ public class Cannon : MonoBehaviour
                 var bulletInPlayerInv = playerController.currentAmmunition.gameObject;
                 if (bulletInPlayerInv != null)
                 {
-                    var bulletInstance = Instantiate(bulletInPlayerInv,transform.position,Quaternion.identity);
-                    bulletInstance.GetComponent<Rigidbody2D>().velocity=((Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position)*bulletSpeed);
+                    var bulletInstance = Instantiate(bulletInPlayerInv, transform.position, Quaternion.identity);
+                    bulletInstance.GetComponent<Rigidbody2D>().velocity = ((Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position) * bulletSpeed);
                     playerController.currentAmmunition = null;
+                    fire.Play();
                 }
             }
         }
