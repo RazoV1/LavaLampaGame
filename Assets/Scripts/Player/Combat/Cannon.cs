@@ -15,6 +15,7 @@ public class Cannon : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private GameObject hidePlatformsParent;
+    [SerializeField] private Transform bulletSpawn;
 
     [SerializeField] private ParticleSystem fire;
 
@@ -88,8 +89,8 @@ public class Cannon : MonoBehaviour
                 var bulletInPlayerInv = playerController.currentAmmunition.gameObject;
                 if (bulletInPlayerInv != null)
                 {
-                    var bulletInstance = Instantiate(bulletInPlayerInv, transform.position, Quaternion.identity);
-                    bulletInstance.GetComponent<Rigidbody2D>().velocity = ((Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized * bulletSpeed);
+                    var bulletInstance = Instantiate(bulletInPlayerInv, bulletSpawn.position, Quaternion.identity);
+                    bulletInstance.GetComponent<Rigidbody2D>().velocity = ((Camera.main.ScreenToWorldPoint(Input.mousePosition) - bulletSpawn.position).normalized * bulletSpeed);
                     playerController.currentAmmunition = null;
                     fire.Play();
                 }

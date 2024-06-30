@@ -187,8 +187,8 @@ GameObject:
   - component: {fileID: 7727673342656096241}
   - component: {fileID: -296222552830570292}
   m_Layer: 0
-  m_Name: BulletBasic32
-  m_TagString: 32
+  m_Name: BulletBasic2B
+  m_TagString: 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

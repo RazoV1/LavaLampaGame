@@ -8,7 +8,10 @@ public class Checkpoint : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-
+            if (PlayerPrefs.GetInt("checkpoint") < int.Parse(gameObject.name))
+            {
+                PlayerPrefs.SetInt("checkpoint", int.Parse(gameObject.name));
+            }
         }
     }
 }

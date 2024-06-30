@@ -17,6 +17,9 @@ public class BugController : MonoBehaviour
     [SerializeField] private int bugCount;
 
     public float spawnSpeed;
+
+    public DoorByTrigger closedDoor;
+    public DoorByTrigger nextDoor;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -42,7 +45,12 @@ public class BugController : MonoBehaviour
             //spawnedBug.number =
             //    GameManager.Instance.bugNumbers[Random.Range(0, GameManager.Instance.bugNumbers.Length)];
             spawnedBug.number = bugNums[i];
-            yield return new WaitForSeconds(timeToSpawn);
+            while (spawnedBug != null)
+            {
+                yield return null;
+            }
         }
+        closedDoor.Open();
+        nextDoor.Open();
     }
 }
