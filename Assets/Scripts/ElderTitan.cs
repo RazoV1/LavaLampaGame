@@ -15,6 +15,7 @@ public class ElderTitan : MonoBehaviour
         {
             GetComponent<Animator>().SetTrigger("On");
             transform.GetChild(0).gameObject.SetActive(true);
+            SoundsBaseCollection.Instance.awakeElder.Play();
             canOpen = true;
         }
     }
