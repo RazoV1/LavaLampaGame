@@ -22,7 +22,7 @@ public class KukarachaWord : Kukaracha
         GetComponent<AudioSource>().Stop();
         timeToSpawn = 10f;
         timeToSpawnText = timeToSpawnText.gameObject.GetComponent<TextMeshPro>();
-        nameStr = GameManager.Instance.bugStrings[Random.Range(0, GameManager.Instance.bugStrings.Length)];
+       // nameStr = bugController.bugStrings[Random.Range(0, GameManager.Instance.bugStrings.Length)];
         nameTextMesh.GetComponent<TextMeshPro>().text = nameStr;
         nameArray = nameStr.ToCharArray();
         playerPos = GameManager.Instance.player.transform;
