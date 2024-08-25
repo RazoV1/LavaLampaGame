@@ -32,8 +32,11 @@ public class Kukaracha : MonoBehaviour
         isMoving = true;
         GetComponent<BoxCollider2D>().enabled = true;
         GetComponent<Animator>().SetTrigger("Bug");
-        GetComponent<Animator>().SetInteger("num",number);
+
         
+        GetComponent<Animator>().SetInteger("num",number);
+
+        if (number < 8) number *= 8;
         GetComponent<AudioSource>().Play();
         isIncubating = false;
     }
@@ -82,12 +85,16 @@ public class Kukaracha : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(gameObject.tag))
+        BulletBehaviour bullet;
+        if (other.TryGetComponent(out bullet))
         {
-            bugController.emptySpawnPositions.Add(spawnPos);
-            bugController.spawnPositions.Remove(spawnPos);
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+            if (bullet.damage == number)
+            {
+                bugController.emptySpawnPositions.Add(spawnPos);
+                bugController.spawnPositions.Remove(spawnPos);
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+            }
         }
         else if (other.tag == "Player")
         {

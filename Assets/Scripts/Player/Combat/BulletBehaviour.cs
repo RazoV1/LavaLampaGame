@@ -7,7 +7,8 @@ using TMPro;
 public class BulletBehaviour : MonoBehaviour
 {
     [SerializeField] private float lifetime;
-    [SerializeField] private int damage;
+    public int damage;
+    [SerializeField] private bool Byte=false;
 
     [SerializeField] private TMP_Text text;
 
@@ -19,7 +20,8 @@ public class BulletBehaviour : MonoBehaviour
 
     private void Start()
     {
-        text.text = (int.Parse(gameObject.tag)/8).ToString() + "�";
+        if (!Byte) text.text = damage.ToString() + "Бит";
+        else text.text = (damage / 8).ToString() + "Байт";
         StartCoroutine(Countdown());
     }
 
