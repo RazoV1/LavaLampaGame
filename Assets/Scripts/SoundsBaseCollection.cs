@@ -37,7 +37,6 @@ public class SoundsBaseCollection : MonoBehaviour
         {
             Instance = this;
         }
-        DontDestroyOnLoad(gameObject);
     }
     
 }
