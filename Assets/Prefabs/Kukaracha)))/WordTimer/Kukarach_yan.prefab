@@ -762,7 +762,7 @@ GameObject:
   - component: {fileID: 2597248011357611571}
   - component: {fileID: 2597248010749999834}
   m_Layer: 0
-  m_Name: Kukarach_word
+  m_Name: Kukarach_yan
   m_TagString: 8
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -898,19 +898,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.2
-  number: 8
+  number: 2
   playerPos: {fileID: 0}
   funnySounds: []
   bugController: {fileID: 0}
   spawnPos: {fileID: 0}
   text: {fileID: 0}
   turnSpeed: 1
+  _timer: 1
   isMoving: 0
   isIncubating: 0
   timeToSpawn: 10
   timeToSpawnText: {fileID: 2597248011971029905}
   nameText: {fileID: 2597248012234462439}
-  nameStr: "\u0410\u0440\u0442\u0451\u043C"
+  nameStr: "\u042F\u043D"
 --- !u!95 &2597248011357611571
 Animator:
   serializedVersion: 5

@@ -1,36 +1,37 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts.Player.Combat;
 using Cinemachine;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace Assets.Scripts
 {
-    public static GameManager Instance { get; private set; }
-
-
-    public GameObject PauseWindow;
-    
-    public CinemachineVirtualCamera playerCamera;
-    public float camSize;
-
-    public BulletProvider BulletProvider;
-
-    public GameObject player;
-
-    public int[] bugNumbers;
-    public string[] bugStrings;
-    
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        if (Instance == null)
+        public static GameManager Instance { get; private set; }
+
+
+        public GameObject PauseWindow;
+    
+        public CinemachineVirtualCamera playerCamera;
+        public float camSize;
+
+        public BulletProvider BulletProvider;
+
+        public GameObject player;
+
+        public int[] bugNumbers;
+        public string[] bugStrings;
+    
+        private void Awake()
         {
-            Instance = this;
-        }
-        else
-        {
-            Debug.LogError("More than one GameManager by name: " + gameObject.name);
-            Destroy(gameObject);
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Debug.LogError("More than one GameManager by name: " + gameObject.name);
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -1,36 +1,37 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class BulletBehaviour : MonoBehaviour
+namespace Assets.Scripts.Player.Combat
 {
-    [SerializeField] private float lifetime;
-    public int damage;
-    [SerializeField] private bool Byte=false;
-
-    [SerializeField] private TMP_Text text;
-
-    private IEnumerator Countdown()
+    public class BulletBehaviour : MonoBehaviour
     {
-        yield return new WaitForSeconds(lifetime);
-        Destroy(gameObject);
-    }
+        [SerializeField] private float lifetime;
+        public int damage;
+        [SerializeField] private bool Byte=false;
 
-    private void Start()
-    {
-        if (!Byte) text.text = damage.ToString() + "Бит";
-        else text.text = (damage / 8).ToString() + "Байт";
-        StartCoroutine(Countdown());
-    }
+        [SerializeField] private TMP_Text text;
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == (int.Parse(gameObject.tag)*8).ToString())
+        private IEnumerator Countdown()
         {
-            Destroy(collision.gameObject);
+            yield return new WaitForSeconds(lifetime);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+
+        private void Start()
+        {
+            if (!Byte) text.text = damage.ToString() + "Бит";
+            else text.text = (damage / 8).ToString() + "Байт";
+            StartCoroutine(Countdown());
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == (int.Parse(gameObject.tag)*8).ToString())
+            {
+                Destroy(collision.gameObject);
+            }
+            Destroy(gameObject);
+        }
     }
 }

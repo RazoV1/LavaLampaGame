@@ -1,43 +1,44 @@
-using platformer;
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts.Player.Movement;
 using UnityEngine;
 
-public class BulletProvider : MonoBehaviour
+namespace Assets.Scripts.Player.Combat
 {
-    public PlayerController playerController;
-    public bool isInPlayersRange = false;
-
-    public GameObject providedBullet;
-
-    public void Start()
+    public class BulletProvider : MonoBehaviour
     {
-        playerController = GameManager.Instance.player.GetComponent<PlayerController>();
-    }
+        public PlayerController playerController;
+        public bool isInPlayersRange = false;
 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
+        public GameObject providedBullet;
+
+        public void Start()
         {
-            isInPlayersRange = true;
+            playerController = GameManager.Instance.player.GetComponent<PlayerController>();
         }
-    }
 
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
+        public void OnTriggerEnter2D(Collider2D collision)
         {
-            isInPlayersRange = false;
+            if (collision.tag == "Player")
+            {
+                isInPlayersRange = true;
+            }
         }
-    }
 
-    public void Update()
-    {
-        if (isInPlayersRange && Input.GetKeyDown(KeyCode.E) && playerController.currentAmmunition == null)
+        public void OnTriggerExit2D(Collider2D collision)
         {
-            playerController.currentAmmunition = providedBullet;
-            playerController.currentProvider = gameObject;
-            gameObject.SetActive(false);
+            if (collision.tag == "Player")
+            {
+                isInPlayersRange = false;
+            }
+        }
+
+        public void Update()
+        {
+            if (isInPlayersRange && Input.GetKeyDown(KeyCode.E) && playerController.currentAmmunition == null)
+            {
+                playerController.currentAmmunition = providedBullet;
+                playerController.currentProvider = gameObject;
+                gameObject.SetActive(false);
+            }
         }
     }
 }

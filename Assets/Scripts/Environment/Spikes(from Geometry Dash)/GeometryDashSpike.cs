@@ -1,16 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GeometryDashSpike : MonoBehaviour
+namespace Assets.Scripts.Environment
 {
-    public void OnCollisionEnter2D(Collision2D collision)
+    public class GeometryDashSpike : MonoBehaviour
     {
-        if (collision.gameObject.tag == "Player")
+        public void OnCollisionEnter2D(Collision2D collision)
         {
-            SoundsBaseCollection.Instance.revive.Play();
-            SceneManager.LoadScene(1);
+            if (collision.gameObject.tag == "Player")
+            {
+                SoundsBaseCollection.Instance.revive.Play();
+                SceneManager.LoadScene(1);
+            }
         }
     }
 }

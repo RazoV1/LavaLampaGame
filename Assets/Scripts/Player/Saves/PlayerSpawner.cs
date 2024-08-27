@@ -1,18 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSpawner : MonoBehaviour
+namespace Assets.Scripts.Player.Saves
 {
-    public List<Transform> Spawns;
-
-    public void Start()
+    public class PlayerSpawner : MonoBehaviour
     {
-        if (PlayerPrefs.HasKey("checkpoint"))
+        public List<Transform> Spawns;
+
+        public void Start()
         {
-            GameManager.Instance.player.transform.position = Spawns[PlayerPrefs.GetInt("checkpoint")].position;
-            Spawns[PlayerPrefs.GetInt("checkpoint")].GetComponent<Checkpoint>().playerLight.shapeLightFalloffSize = Spawns[PlayerPrefs.GetInt("checkpoint")].GetComponent<Checkpoint>().radius;
-        }
+            if (PlayerPrefs.HasKey("checkpoint"))
+            {
+                GameManager.Instance.player.transform.position = Spawns[PlayerPrefs.GetInt("checkpoint")].position;
+                Spawns[PlayerPrefs.GetInt("checkpoint")].GetComponent<Checkpoint>().playerLight.shapeLightFalloffSize = Spawns[PlayerPrefs.GetInt("checkpoint")].GetComponent<Checkpoint>().radius;
+            }
         
+        }
     }
 }

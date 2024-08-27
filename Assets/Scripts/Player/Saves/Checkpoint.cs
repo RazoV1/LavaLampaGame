@@ -1,33 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class Checkpoint : MonoBehaviour
+namespace Assets.Scripts.Player.Saves
 {
-    public Light2D playerLight;
-    public float radius;
-    public void OnTriggerEnter2D(Collider2D collision)
+    public class Checkpoint : MonoBehaviour
     {
-        if (collision.tag == "Player")
+        public Light2D playerLight;
+        public float radius;
+        public void OnTriggerEnter2D(Collider2D collision)
         {
-            if (PlayerPrefs.HasKey("checkpoint"))
+            if (collision.tag == "Player")
             {
-                if (PlayerPrefs.GetInt("checkpoint") < int.Parse(gameObject.name))
+                if (PlayerPrefs.HasKey("checkpoint"))
                 {
-                    PlayerPrefs.SetInt("checkpoint", int.Parse(gameObject.name));
-                    playerLight.shapeLightFalloffSize = radius;
+                    if (PlayerPrefs.GetInt("checkpoint") < int.Parse(gameObject.name))
+                    {
+                        PlayerPrefs.SetInt("checkpoint", int.Parse(gameObject.name));
+                        playerLight.shapeLightFalloffSize = radius;
+                    }
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("checkpoint", 0);
                 }
             }
-            else
-            {
-                PlayerPrefs.SetInt("checkpoint", 0);
-            }
         }
-    }
 
-    public void UpdateRadius()
-    {
-        playerLight.shapeLightFalloffSize = radius;
+        public void UpdateRadius()
+        {
+            playerLight.shapeLightFalloffSize = radius;
+        }
     }
 }

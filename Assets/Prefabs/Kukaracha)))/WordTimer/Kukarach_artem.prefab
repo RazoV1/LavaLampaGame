@@ -762,7 +762,7 @@ GameObject:
   - component: {fileID: 2597248011357611571}
   - component: {fileID: 2597248010749999834}
   m_Layer: 0
-  m_Name: Kukarach_word
+  m_Name: Kukarach_artem
   m_TagString: 8
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -898,13 +898,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.2
-  number: 8
+  number: 1
   playerPos: {fileID: 0}
   funnySounds: []
   bugController: {fileID: 0}
   spawnPos: {fileID: 0}
   text: {fileID: 0}
   turnSpeed: 1
+  _timer: 1
   isMoving: 0
   isIncubating: 0
   timeToSpawn: 10

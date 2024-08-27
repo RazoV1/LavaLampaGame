@@ -1,15 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseFunctions : MonoBehaviour
+namespace Assets.Scripts.Environment.Pause
 {
-    public void ToScene(int ind)
+    public class PauseFunctions : MonoBehaviour
     {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(ind);
+        public void ToScene(int ind)
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(ind);
+        }
+
+
     }
-
-
 }

@@ -1,9 +1,10 @@
 using System;
+using Assets.Scripts.Player.Combat;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace platformer
+namespace Assets.Scripts.Player.Movement
 {
     /// <summary>
     /// Hey!

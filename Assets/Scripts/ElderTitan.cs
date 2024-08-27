@@ -1,68 +1,69 @@
-using System.Collections;
-using System.Collections.Generic;
-using platformer;
+using Assets.Scripts.Player.Movement;
 using UnityEngine;
 
-public class ElderTitan : MonoBehaviour
+namespace Assets.Scripts
 {
-    [SerializeField] private GameObject test;
+    public class ElderTitan : MonoBehaviour
+    {
+        [SerializeField] private GameObject test;
 
-    private bool canOpen = false;
+        private bool canOpen = false;
     
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            Animator anim;
-            TryGetComponent<Animator>(out anim);
-            try
+            if (other.CompareTag("Player"))
             {
-                anim.SetTrigger("On");
+                Animator anim;
+                TryGetComponent<Animator>(out anim);
+                try
+                {
+                    anim.SetTrigger("On");
+                }
+                catch
+                {
+                    Debug.Log("L");
+                }
+                transform.GetChild(0).gameObject.SetActive(true);
+                SoundsBaseCollection.Instance.awakeElder.Play();
+                canOpen = true;
             }
-            catch
-            {
-                Debug.Log("L");
-            }
-            transform.GetChild(0).gameObject.SetActive(true);
-            SoundsBaseCollection.Instance.awakeElder.Play();
-            canOpen = true;
         }
-    }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && canOpen)
+        private void Update()
         {
-            test.SetActive(true);
-            GameManager.Instance.player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            GameManager.Instance.player.GetComponent<PlayerController>().enabled = false;
-            GameManager.Instance.player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            if (Input.GetKeyDown(KeyCode.E) && canOpen)
+            {
+                test.SetActive(true);
+                GameManager.Instance.player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                GameManager.Instance.player.GetComponent<PlayerController>().enabled = false;
+                GameManager.Instance.player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            }
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
+        private void OnTriggerExit2D(Collider2D other)
         {
-            Animator anim;
-            TryGetComponent<Animator>(out anim);
-            try
+            if (other.CompareTag("Player"))
             {
-                anim.SetTrigger("Off");
+                Animator anim;
+                TryGetComponent<Animator>(out anim);
+                try
+                {
+                    anim.SetTrigger("Off");
+                }
+                catch
+                {
+                    Debug.Log("L");
+                }
+                canOpen = false;
+                CloseWard();
             }
-            catch
-            {
-                Debug.Log("L");
-            }
-            canOpen = false;
-            CloseWard();
         }
-    }
 
-    public void CloseWard()
-    {
-        transform.GetChild(0).gameObject.SetActive(false);
-        test.SetActive(false);
-        GameManager.Instance.player.GetComponent<PlayerController>().enabled = true;
+        public void CloseWard()
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+            test.SetActive(false);
+            GameManager.Instance.player.GetComponent<PlayerController>().enabled = true;
+        }
     }
 }

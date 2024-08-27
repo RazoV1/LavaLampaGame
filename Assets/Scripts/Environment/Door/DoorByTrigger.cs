@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorByTrigger : MonoBehaviour
+namespace Assets.Scripts.Environment.Door
 {
-    [SerializeField] private GameObject desintegrate;
-
-    public void Open()
+    public class DoorByTrigger : MonoBehaviour
     {
-        Instantiate(desintegrate,transform.position,Quaternion.identity);
-        Destroy(gameObject);
+        [SerializeField] private GameObject desintegrate;
+
+        public void Open()
+        {
+            Instantiate(desintegrate,transform.position,Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }

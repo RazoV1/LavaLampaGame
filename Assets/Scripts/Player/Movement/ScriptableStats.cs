@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace platformer
+namespace Assets.Scripts.Player.Movement
 {
     [CreateAssetMenu]
     public class ScriptableStats : ScriptableObject

@@ -1,15 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class AddRadius : MonoBehaviour
+namespace Assets.Scripts.Player.lightUp
 {
-    public Light2D playerLight;
-    public float radius;
-
-    public void UpdateRadius()
+    public class AddRadius : MonoBehaviour
     {
-        playerLight.shapeLightFalloffSize = radius;
+        public Light2D playerLight;
+        public float radius;
+
+        public void UpdateRadius()
+        {
+            playerLight.shapeLightFalloffSize = radius;
+        }
     }
 }
