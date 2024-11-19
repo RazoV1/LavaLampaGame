@@ -27,9 +27,11 @@ namespace Assets.Scripts.Enemies.Kukaracha
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            print("TRIGGER COCKROACH: " + other.gameObject.name);
             BulletBehaviour bullet;
             if (other.TryGetComponent(out bullet))
             {
+                print("COCKROACH DAMAGE");
                 number -= bullet.damage;
                 if (number <= 0)
                 {

@@ -905,6 +905,7 @@ MonoBehaviour:
   spawnPos: {fileID: 0}
   text: {fileID: 0}
   turnSpeed: 1
+  _timer: 0
   isMoving: 0
   isIncubating: 0
   timeToSpawn: 10

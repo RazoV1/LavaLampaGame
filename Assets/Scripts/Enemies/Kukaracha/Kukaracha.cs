@@ -38,7 +38,7 @@ namespace Assets.Scripts.Enemies.Kukaracha
             GetComponent<Animator>().SetTrigger("Bug");
         
             GetComponent<Animator>().SetInteger("num",number);
-            number *= 8;
+            //number *= 8;
         
             GetComponent<AudioSource>().Play();
             isIncubating = false;
@@ -92,13 +92,18 @@ namespace Assets.Scripts.Enemies.Kukaracha
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            print("Trigger Enter by " + other.gameObject.name);
             BulletBehaviour bullet;
-            if (other.TryGetComponent(out bullet))
+            if (other.TryGetComponent<BulletBehaviour>(out bullet))
             {
+                print("TRY GET COMPONENT");
                 if (bullet.damage == number)
                 {
+                    print("BULLET DAMAGE = NUMBER");
                     if (bugController)
                     {
+                        print("BUG CONTROLLER");
+
                         bugController.emptySpawnPositions.Add(spawnPos);
                         bugController.spawnPositions.Remove(spawnPos);
                     }
