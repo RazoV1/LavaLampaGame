@@ -88,6 +88,7 @@ namespace Assets.Scripts.Player.Combat
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                 if (Input.GetMouseButtonDown(0))
                 {
+
                     var bulletInPlayerInv = playerController.currentAmmunition.gameObject;
                     if (bulletInPlayerInv != null)
                     {

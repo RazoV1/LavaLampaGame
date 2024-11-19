@@ -27,6 +27,7 @@ namespace Assets.Scripts.Player.Combat
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            print("Collision");
             if (collision.gameObject.tag == (int.Parse(gameObject.tag)*8).ToString())
             {
                 Destroy(collision.gameObject);

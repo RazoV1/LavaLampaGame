@@ -70174,11 +70174,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3181980723766721791, guid: 6f3b7fbdfb641ed43b4103243819dc18, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0.75
+      value: 0.86
       objectReference: {fileID: 0}
     - target: {fileID: 3181980723766721791, guid: 6f3b7fbdfb641ed43b4103243819dc18, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0.12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3181980723766721791, guid: 6f3b7fbdfb641ed43b4103243819dc18, type: 3}
       propertyPath: m_LocalScale.x
@@ -70210,19 +70210,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3181980723853324716, guid: 6f3b7fbdfb641ed43b4103243819dc18, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0.75
+      value: 0.86
       objectReference: {fileID: 0}
     - target: {fileID: 3181980723853324716, guid: 6f3b7fbdfb641ed43b4103243819dc18, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0.12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3181980723853324716, guid: 6f3b7fbdfb641ed43b4103243819dc18, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.375
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: 3181980723853324716, guid: 6f3b7fbdfb641ed43b4103243819dc18, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.06
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181980723853324717, guid: 6f3b7fbdfb641ed43b4103243819dc18, type: 3}
+      propertyPath: m_text
+      value: "\u0414\u0438\u0430\u043B\u043E\u0433\u0438 \u0433\u0435\u0439\u043C\u043F\u043B\u0435\u0439"
       objectReference: {fileID: 0}
     - target: {fileID: 3181980723853324717, guid: 6f3b7fbdfb641ed43b4103243819dc18, type: 3}
       propertyPath: m_fontAsset
@@ -70231,10 +70235,10 @@ PrefabInstance:
     - target: {fileID: 3181980723853324717, guid: 6f3b7fbdfb641ed43b4103243819dc18, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 4644926653293446134, guid: 147dc5de60e843043b80feab1548e582, type: 2}
     - target: {fileID: 3181980723853324717, guid: 6f3b7fbdfb641ed43b4103243819dc18, type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3181980724026507264, guid: 6f3b7fbdfb641ed43b4103243819dc18, type: 3}
       propertyPath: player
