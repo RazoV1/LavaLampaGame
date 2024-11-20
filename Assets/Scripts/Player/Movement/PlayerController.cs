@@ -138,6 +138,8 @@ namespace Assets.Scripts.Player.Movement
                 SpawnedBullet.transform.GetChild(0).GetComponent<TextMeshPro>().text =
                     SpawnedBullet.gameObject.tag.ToString();
 
+                SpawnedBullet.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+
             }
 
             if (_stats.SnapInput)
