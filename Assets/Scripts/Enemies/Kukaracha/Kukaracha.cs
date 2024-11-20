@@ -38,7 +38,7 @@ namespace Assets.Scripts.Enemies.Kukaracha
             GetComponent<Animator>().SetTrigger("Bug");
         
             GetComponent<Animator>().SetInteger("num",number);
-            //number *= 8;
+            
         
             GetComponent<AudioSource>().Play();
             isIncubating = false;
@@ -53,12 +53,16 @@ namespace Assets.Scripts.Enemies.Kukaracha
         public void Start()
         {
             GetComponent<AudioSource>().Stop();
+            
+            if (number < 8) number *= 8;
+            
             timeToSpawn = 10f;
             timeToSpawnText = timeToSpawnText.gameObject.GetComponent<TextMeshPro>();
 
             playerPos = GameManager.Instance.player.transform;
             gameObject.tag = number.ToString();
             text.text = number.ToString() + "\n���";
+            
         }
 
         private void Update()
@@ -112,7 +116,7 @@ namespace Assets.Scripts.Enemies.Kukaracha
                     Destroy(gameObject);
                 }
             }
-            else if (other.tag == "Player")
+            else if (other.tag == "Player" && !isIncubating)
             {
                 SceneManager.LoadScene(1);
             }
